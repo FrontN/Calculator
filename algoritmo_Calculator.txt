@@ -1,0 +1,48 @@
+ALGORITMO: Calculator
+------------------------------
+
+VARIABILI E TIPI:
+  - first_number, second_number, soluzione: float
+  - operation: dict
+
+COSTANTI:
+
+INIZIO:
+  Funzione addizione(a,b): int
+		ritorna a + b
+  Funzione sottrazione(a,b): int
+		ritorna a - b
+  Funzione moltiplicazione(a,b): int
+		ritorna a * b
+  Funzione divisione(a,b): int
+		Se b è uguale a 0
+			ritorna "Errore"
+		ritorna a / b
+  operations <--- dict("+": addizione, "-": sottrazione, "*": moltiplicaizone, "/": divisione)
+  
+  prima_soluzione <--- 0
+  soluzione <--- 0
+  Finche è TRUE
+  	Se prima_soluzione è uguale a 0
+  		scrivi("What's the first number?")
+  		leggi(first_number)
+  	Altrimenti
+		scrivi("Type 'clear' to start a new calculation")
+		first_number = soluzione
+  	Fine Se
+
+  	scrivi("Pick an operation")
+  	scrivi(lista le key all'interno di operations)
+  	leggi(operation)
+  	Se operation uguale "clear"
+		prima_soluzione <--- 0
+		rilancia il ciclo
+	Altrimenti
+		scrivi("What's the next number?")
+		leggi(second_number)
+		soluzione <--- operations[operation](first_number, second_number
+		scrivi(first_number, operation, second_number, "=", soluzione))
+		prima_soluzione += 1
+	Fine Se
+
+FINE
