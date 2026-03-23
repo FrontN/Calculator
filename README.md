@@ -1,81 +1,123 @@
 Python Advanced Calculator 🧮
-Una calcolatrice da riga di comando (CLI) robusta e interattiva, progettata con un approccio modulare e una gestione avanzata delle eccezioni per un'esperienza utente fluida e senza crash.
+A robust, console-based calculator implemented in Python featuring modular logic, comprehensive error handling, and persistent result memory.
 
-✨ Key Features
-Persistent Memory: Possibilità di utilizzare il risultato dell'ultimo calcolo come base per l'operazione successiva senza ricominciare da zero.
+Features 🎮
+Persistent Memory: Seamlessly carry over the previous result as the starting point for your next calculation.
 
-Advanced Error Handling: Protezione totale contro input non numerici tramite blocchi try-except e validazione continua.
+Robust Input Handling: Custom validation loops with try-except blocks ensure the app never crashes on invalid numeric input.
 
-Smart Division & Modulo: Logica personalizzata per prevenire il crash da "Division by Zero" su tre diversi operatori (/, //, %).
+Smart Error Recovery: Specialized logic to handle "Division by Zero" without resetting the entire session.
 
-Modular Architecture: Le operazioni sono mappate tramite un dizionario, permettendo di estendere facilmente le funzionalità (potenze, moduli, divisioni intere).
+Modular Design: Clean separation of mathematical operations, input validation, and core application state.
 
-UX Optimized: Pulizia automatica del terminale (clear_screen) e ritardi temporizzati (time.sleep) per garantire la massima leggibilità tra i calcoli.
+Dynamic Operation Mapping: Uses a dictionary-based dispatch system instead of complex if/else chains.
 
-📋 Operations & Logic
-Il programma non si limita alle quattro operazioni base, ma scompone la divisione in tre parti logiche:
+Cross-Platform UI: Automatic terminal clearing for Windows and Unix-based systems.
 
-Standard Division (/): Restituisce il quoziente decimale esatto.
+Operations 📋
+Basic: Addition (+), Subtraction (-), Multiplication (*)
 
-Floor Division (//): Restituisce quante volte il divisore sta interamente nel dividendo.
+Division Suite:
 
-Modulus (%): Restituisce esclusivamente il resto della divisione.
+Standard Division (/): Returns the exact float quozient.
 
-Exponentiation (**): Calcola la potenza del primo numero elevato al secondo.
+Floor Division (//): Returns the integer quozient.
 
-🚀 Getting Started
-Prerequisites
-Python 3.x installato sul sistema.
+Modulus (%): Returns the remainder of the division.
 
-Installation & Execution
-Clona il repository:
+Advanced: Exponentiation (**) for calculating powers.
 
+Project Structure 📁
+python-calculator/
+├── Calculatorworkflow.drawio.pdf
+├── algoritmo_Calculator.txt
+├── main.py                # Main application logic and entry point
+├── Calculator_art.py      # ASCII art logo
+└── README.md              # Project documentation
+Main Functions Overview:
+clear_screen() - Clears console and displays the calculator logo.
+
+get_valid_input() - Validates operation selection against a list of allowed symbols.
+
+get_valid_number() - Safely converts user input to float with error handling.
+
+operations() - Returns the operation dictionary or a specific function mapping.
+
+add(), subs(), mult(), div(), int_div(), mov(), pow() - Core math logic.
+
+main() - The primary state machine managing the calculation loop.
+
+Requirements ✅
+Python 3.x
+
+No external dependencies required (pure Python standard library).
+
+Installation & Setup 🚀
+Clone the repository:
 Bash
 git clone https://github.com/FrontN/python-calculator.git
 cd python-calculator
-Avvia l'applicazione:
+How to Play 🎯
+Run the application:
 
 Bash
 python main.py
-🛠️ Technical Implementation
-State Management & Null Logic
-A differenza delle versioni base, questa calcolatrice utilizza una gestione dello stato basata su None:
+Choose your mode:
 
-Inizializzazione: solution = None permette di distinguere tra un calcolo non ancora effettuato e un risultato che vale matematicamente 0.
+Type y to use the previous result as the first number.
 
-Persistenza: Se solution != None, il sistema chiede all'utente se desidera procedere con il numero precedente o iniziare un nuovo set di calcoli.
+Type n to start a fresh calculation.
 
-Dictionary Mapping vs If/Else
-Per evitare catene disordinate di if/elif, il progetto utilizza il Dictionary Dispatch Pattern:
+Perform calculations:
 
-Python
-operations = {
-    "+": add,
-    "-": subs,
-    "*": mult,
-    "/": div,
-    "//": int_div,
-    "%": mov,
-    "**": pow
-}
-Questo permette chiamate dinamiche alle funzioni: operations[operation](a, b).
+Enter the first number (if starting new).
 
-Recursive Input Validation
-La gestione del secondo numero avviene in un ciclo while True dedicato:
+Pick an operation from the displayed list (e.g., *, %, **).
 
-Se l'operazione restituisce una stringa (messaggio di errore), il sistema visualizza l'errore e richiede solo il secondo numero, mantenendo in memoria il primo numero e l'operatore scelto.
+Enter the next number.
 
-📖 Usage Example
-Plaintext
-What's the first number? 17
-Pick an operation: +  -  * /  //  %  **
-Selection: %
-What's the next number? 5
+Error Correction:
 
-✅ Result: 17.0 % 5.0 = 2.0
+If you attempt to divide by zero, the app will warn you and ask for a new second number immediately, saving your progress.
 
-Type 'y' to continue with 2.0, type 'n' to start a new calculation: 
-👨‍💻 Author
-FrontN - Sviluppato come approfondimento sulla programmazione funzionale, gestione delle eccezioni e logica degli stati in Python.
+Game Output Example 📺
+12.0
+Operations:
++
+-
+*
+/
+//
+%
+**
+Pick an operation: *
+
+12.0 * 
+What's the next number? 2
+
+12.0 * 2.0 = 24.0
+Technical Highlights 💡
+State Persistence: Uses None initialization for solution to distinguish between a zero result and a new state.
+
+Recursive Logic: The nested while True loop for second numbers ensures a smooth UX during mathematical errors.
+
+Clean Code: Documented with standard Python Docstrings for every function.
+
+Dry Principle: Reusable validation functions reduce code duplication.
+
+Future Enhancements 🎯
+Scientific functions (Square root, Logarithms)
+
+Calculation history log (save to .txt)
+
+Support for multiple numbers in a single string (expression parsing)
+
+Constants support (Pi, e)
+
+Contributing 🤝
+Feel free to fork this repository and submit pull requests for any improvements!
+
+Author 👨‍💻
+FrontN - Developed as a deep dive into Python's functional programming and exception handling.
 
 Happy calculating! 🔢
